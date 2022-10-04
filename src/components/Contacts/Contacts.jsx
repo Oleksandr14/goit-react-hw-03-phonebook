@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 import { Box } from 'components/Box';
-import { Item, Button } from './Contacts.styled';
+import { Item, Button, Text } from './Contacts.styled';
 import { BsEmojiSmile } from 'react-icons/bs';
 
 export const Contacts = ({ contacts, onDeleteContact }) => {
@@ -11,7 +11,10 @@ export const Contacts = ({ contacts, onDeleteContact }) => {
         {contacts.map(({ name, number, id }) => {
           return (
             <Item key={id}>
-              <BsEmojiSmile size={14} color="blue" /> {name}: {number}
+              <BsEmojiSmile size={14} color="blue" />{' '}
+              <Text>
+                {name}: {number}
+              </Text>
               <Button type="button" onClick={() => onDeleteContact(id)}>
                 Delete{' '}
               </Button>
