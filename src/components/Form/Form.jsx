@@ -18,14 +18,10 @@ export class Form extends Component {
     e.preventDefault();
     const { name, number } = this.state;
     const newContact = { name, number, id: uuidv4() };
-
-    if (this.props.namesArray.includes(name)) {
-      alert(`${name} is already in contacts`);
-    } else {
-      this.props.onAddContact(newContact);
-    }
-
     this.reset();
+    if (!this.props.onAddContact(newContact, name)) {
+      return;
+    }
   };
 
   reset = () => {
@@ -69,6 +65,5 @@ export class Form extends Component {
 }
 
 Form.propTypes = {
-  namesArray: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   onAddContact: PropTypes.func.isRequired,
 };
