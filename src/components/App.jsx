@@ -37,7 +37,7 @@ export class App extends Component {
       contact.name.toLowerCase()
     );
 
-    if (namesArray.includes(name)) {
+    if (namesArray.includes(name.toLowerCase())) {
       return alert(`${name} is already in contacts`);
     }
 
